@@ -149,25 +149,25 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.2, num_aug=4)
 	# sr 특정 단어를 유의어로 교체
 	for _ in range(num_new_per_technique):
 		a_words = synonym_replacement(words, n_sr)
-		print(a_words)
+		#print(a_words)
 		augmented_sentences.append(' '.join(a_words))
 
 	# ri 임의의 단어를 삽입
 	for _ in range(num_new_per_technique):
 		a_words = random_insertion(words, n_ri)
-		print(a_words)
+		#print(a_words)
 		augmented_sentences.append(' '.join(a_words))
 
 	# rs 문장 내 임의의 두 단어의 위츠를 바꿈
 	for _ in range(num_new_per_technique):
 		a_words = random_swap(words, n_rs)
-		print(a_words)
+		#print(a_words)
 		augmented_sentences.append(" ".join(a_words))
 
 	# rd 임의의 단어를 삭제
 	for _ in range(num_new_per_technique):
 		a_words = random_deletion(words, p_rd)
-		print(a_words)
+		#print(a_words)
 		augmented_sentences.append(" ".join(a_words))
 
 	augmented_sentences = [get_only_hangul(sentence) for sentence in augmented_sentences]
@@ -179,12 +179,6 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.2, num_aug=4)
 		keep_prob = num_aug / len(augmented_sentences)
 		augmented_sentences = [s for s in augmented_sentences if random.uniform(0, 1) < keep_prob]
 
-	augmented_sentences.append(sentence)
+	augmented_sentences.append(sentence) #원래 문장 추가
 
 	return augmented_sentences
-
-augmented_sentences = EDA('제가 우울감을 느낀지는 오래됐는데 점점 개선되고 있다고 느껴요')
-augmented_sentences = EDA('제가 잘못한 건 아닌 것 같아요')
-
-
-#print(augmented_sentences)
