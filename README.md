@@ -27,6 +27,7 @@ EDA에 대한 자세한 내용은 [논문](https://arxiv.org/pdf/1901.11196.pdf)
 data_path 데이터 구조
 
 |script|label|
+|---|---|
 |나는 정말 행복해|1|
 |나는 정말 불행하고 슬퍼|0|
 
@@ -35,6 +36,7 @@ data_path 데이터 구조
 inference한 결과
 
 |script|label|
+|---|---|
 |나는 정말 행복|1|
 |나는 행복해|1|
 |나는 정말 불행하고|2|
