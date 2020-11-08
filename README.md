@@ -22,7 +22,25 @@ EDA에 대한 자세한 내용은 [논문](https://arxiv.org/pdf/1901.11196.pdf)
 
 ## How to use
 
+1. inference.py의 data_path(데이터를 늘린 csv파일 경로), save_file_path(늘린 데이터를 저장할 경로)를 설정해주시고 실행하시면 됩니다.
+
+data_path 데이터 구조
+|script|label|
+|나는 정말 행복해|1|
+|나는 정말 불행하고 슬퍼|0|
+
 ## 결과
+
+inference한 결과
+|script|label|
+|나는 정말 행복|1|
+|나는 행복해|1|
+|나는 정말 불행하고|2|
+|나는 불행하고 정말 슬퍼|2|
+
+이렇게 결과를 얻을 수 있습니다.
+
+## EDA만 한 결과
 
 원문 데이터
 ```plain
