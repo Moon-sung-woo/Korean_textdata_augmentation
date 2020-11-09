@@ -24,7 +24,13 @@ EDA에 대한 자세한 내용은 [논문](https://arxiv.org/pdf/1901.11196.pdf)
 
 1. inference.py의 data_path(데이터를 늘린 csv파일 경로), save_file_path(늘린 데이터를 저장할 경로)를 설정해주시고 실행하시면 됩니다.
 
-data_path 데이터 구조
+2. make_dataset.py
+
+sum_sheet 함수는 나누어져 있는 sheet를 합쳐주고 label을 붙여주는 함수입니다.
+
+sum_csv 함수는 나누어져 있는 파일을 합쳐주는 함수입니다.
+
+### data_path 데이터 구조
 
 |script|label|
 |---|---|
