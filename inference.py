@@ -13,10 +13,9 @@ label_data = data['label'].values
 
 f = open(save_file_path, 'w', encoding='utf-8')
 wr = csv.writer(f)
-wr.writerow(["script", "label"])
+
 for script, label in zip(script_data, label_data):
-    #print(script, label)
-    #print(EDA(script))
+
     eda_data = EDA(script)
     for eda in eda_data:
         print(eda)
