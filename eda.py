@@ -146,29 +146,40 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.2, num_aug=4)
 	n_ri = max(1, int(alpha_ri*num_words))
 	n_rs = max(1, int(alpha_rs*num_words))
 
+	augmented_sentences.append(sentence) #원래 문장 추가
+
 	# sr 특정 단어를 유의어로 교체
 	for _ in range(num_new_per_technique):
 		a_words = synonym_replacement(words, n_sr)
 		#print(a_words)
-		augmented_sentences.append(' '.join(a_words))
+		a_words = ' '.join(a_words)
+		if a_words not in augmented_sentences: #중복되는거 있는지 확인
+			augmented_sentences.append(a_words)
+
 
 	# ri 임의의 단어를 삽입
 	for _ in range(num_new_per_technique):
 		a_words = random_insertion(words, n_ri)
 		#print(a_words)
-		augmented_sentences.append(' '.join(a_words))
+		a_words = ' '.join(a_words)
+		if a_words not in augmented_sentences: #중복되는거 있는지 확인
+			augmented_sentences.append(a_words)
 
 	# rs 문장 내 임의의 두 단어의 위츠를 바꿈
 	for _ in range(num_new_per_technique):
 		a_words = random_swap(words, n_rs)
 		#print(a_words)
-		augmented_sentences.append(" ".join(a_words))
+		a_words = ' '.join(a_words)
+		if a_words not in augmented_sentences: #중복되는거 있는지 확인
+			augmented_sentences.append(a_words)
 
 	# rd 임의의 단어를 삭제
 	for _ in range(num_new_per_technique):
 		a_words = random_deletion(words, p_rd)
 		#print(a_words)
-		augmented_sentences.append(" ".join(a_words))
+		a_words = ' '.join(a_words)
+		if a_words not in augmented_sentences: #중복되는거 있는지 확인
+			augmented_sentences.append(a_words)
 
 	augmented_sentences = [get_only_hangul(sentence) for sentence in augmented_sentences]
 	#random.shuffle(augmented_sentences)
@@ -179,6 +190,6 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.2, num_aug=4)
 		keep_prob = num_aug / len(augmented_sentences)
 		augmented_sentences = [s for s in augmented_sentences if random.uniform(0, 1) < keep_prob]
 
-	augmented_sentences.append(sentence) #원래 문장 추가
+
 
 	return augmented_sentences

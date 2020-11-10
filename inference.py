@@ -4,8 +4,8 @@ from eda import EDA
 import pandas as pd
 import csv
 
-data_path = 'test2.csv'
-save_file_path = 'final_script.csv'
+data_path = 'total_data.csv'
+save_file_path = 'augmentation_data.csv'
 data = pd.read_csv(data_path)
 
 script_data = data['script'].values
@@ -22,7 +22,3 @@ for script, label in zip(script_data, label_data):
         print(eda)
         wr.writerow([eda, label])
 f.close()
-
-df = pd.read_csv('final_script.csv', sep=',')
-df = df.drop_duplicates(['script'], keep="last").value_counts()
-print(df)
