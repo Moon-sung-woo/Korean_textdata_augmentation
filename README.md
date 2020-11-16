@@ -24,6 +24,8 @@ EDA에 대한 자세한 내용은 [논문](https://arxiv.org/pdf/1901.11196.pdf)
 
 1. inference.py의 data_path(데이터를 늘린 csv파일 경로), save_file_path(늘린 데이터를 저장할 경로)를 설정해주시고 실행하시면 됩니다.
 
+EDA의 파라미터 값을 크게 하면 문장의 변화도 또한 커집니다.
+
 2. make_dataset.py
 
 sum_sheet 함수는 나누어져 있는 sheet를 합쳐주고 label을 붙여주는 함수입니다.
