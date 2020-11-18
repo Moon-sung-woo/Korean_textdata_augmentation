@@ -4,9 +4,14 @@ import openpyxl
 import pandas as pd
 import glob
 import os
+#from g2pk import G2p
+
+#g2p = G2p()
+#print(g2p("어제는 날씨가 맑았는데, 오늘은 흐리다."))
 
 def sum_sheet():
-    file_path = 'data/11_08_script2.xlsx'
+    file_path = 'data/11_09_script3.xlsx'
+    output_path = 'new_data/sum_script3.csv'
     sheetList = []
 
     wb = openpyxl.load_workbook(file_path)
@@ -30,27 +35,34 @@ def sum_sheet():
     print(datalist)
     final_df = pd.concat(datalist, ignore_index=True)
     final_df.columns = ['script', 'label']
-    final_df.to_csv('sum_script2.csv', sep=',', index=False, encoding='utf-8')
+    final_df.to_csv(output_path, sep=',', index=False, encoding='utf-8')
 
-    test_df = pd.read_csv('sum_script2.csv')
+    test_df = pd.read_csv(output_path)
     print('######################################################################')
     print(test_df)
 
 def sum_csv():
-    input_file = r'new_data' # csv파일들이 있는 디렉토리 위치
-    output_file = r'total_data.csv'
+    input_file = r'sum_data' # csv파일들이 있는 디렉토리 위치
+    output_file = r'sum_asr.csv'
 
-    allFile_list = glob.glob(os.path.join(input_file, 'sum_*')) #sum_으로 되어있는 파일들을 모은다.
+    allFile_list = glob.glob(os.path.join(input_file, 'output*')) #sum_으로 되어있는 파일들을 모은다.
     print(allFile_list)
     allData = []
 
     for file in allFile_list:
-        df = pd.read_csv(file)
+        df = pd.read_csv(file, header=None)
         allData.append(df)
 
-    dataCombine = pd.concat(allData, axis=0, ignore_index=True)
+    dataCombine = pd.concat(allData, axis=0, ignore_index=False)
 
-    dataCombine.to_csv(output_file, index=False, encoding='utf-8')
+    # dataCombine.columns = ['script','label'] #컬럼명 추가해 주는 부분
 
-#sum_sheet()
+    dataCombine.to_csv(output_file, index=False, encoding='utf-8', header=False) #header = False로 하면 컬럼 이름 저장 안함.
+
+def change_csv():
+    input_file = 'sampledata.csv'
+    output_file = 'sampledata2.csv'
+    df = pd.read_csv(input_file, encoding='cp949')
+    df.to_csv(output_file, index=False, encoding='utf-8')
+
 sum_csv()

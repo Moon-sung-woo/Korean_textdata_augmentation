@@ -4,8 +4,8 @@ from eda import EDA
 import pandas as pd
 import csv
 
-data_path = 'total_data.csv'
-save_file_path = 'augmentation_data.csv'
+data_path = 'clean_g2pk_forInfer.csv'
+save_file_path = 'clean_g2pk_withEDA.csv'
 data = pd.read_csv(data_path)
 
 script_data = data['script'].values
