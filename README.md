@@ -28,7 +28,7 @@ EDA의 파라미터 값을 크게 하면 문장의 변화도 또한 커집니다
 
 2. make_dataset.py
 
-sum_sheet 함수는 나누어져 있는 sheet를 합쳐주고 label을 붙여주는 함수입니다.
+sum_sheet 함수는 나누어져 있는 sheet를 합쳐주고 label을 붙여주는 함수입니다.(pandas사용)
 
 sum_csv 함수는 나누어져 있는 파일을 합쳐주는 함수입니다.
 
