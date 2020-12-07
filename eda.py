@@ -146,7 +146,7 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.2, num_aug=4)
 	n_ri = max(1, int(alpha_ri*num_words))
 	n_rs = max(1, int(alpha_rs*num_words))
 
-	augmented_sentences.append(sentence) #원래 문장 추가
+	#augmented_sentences.append(sentence) #원래 문장 추가
 
 	# sr 특정 단어를 유의어로 교체
 	for _ in range(num_new_per_technique):

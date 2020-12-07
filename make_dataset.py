@@ -42,8 +42,8 @@ def sum_sheet():
     print(test_df)
 
 def sum_csv():
-    input_file = r'sum_data' # csv파일들이 있는 디렉토리 위치
-    output_file = r'sampledata_asr_g2pk.csv'
+    input_file = r'data' # csv파일들이 있는 디렉토리 위치
+    output_file = r'output_data/clean_g2pk_EDA.csv'
 
     allFile_list = glob.glob(os.path.join(input_file, '*')) #sum_으로 되어있는 파일들을 모은다.
     print(allFile_list)
@@ -51,13 +51,14 @@ def sum_csv():
 
     for file in allFile_list:
         df = pd.read_csv(file, header=None)
+        print(df.head(5))
         allData.append(df)
 
     dataCombine = pd.concat(allData, axis=0, ignore_index=False)
 
-    dataCombine.columns = ['script','label'] #컬럼명 추가해 주는 부분
+    #dataCombine.columns = ['Column1', 'Column2'] #컬럼명 추가해 주는 부분
 
-    dataCombine.to_csv(output_file, index=False, encoding='utf-8')#, header=False) #header = False로 하면 컬럼 이름 저장 안함.
+    dataCombine.to_csv(output_file, index=False, encoding='utf-8', header=False) #header = False로 하면 컬럼 이름 저장 안함.
 
 def change_csv():
     input_file = 'sampledata.csv'
@@ -65,4 +66,12 @@ def change_csv():
     df = pd.read_csv(input_file, encoding='cp949')
     df.to_csv(output_file, index=False, encoding='utf-8')
 
+def add_column_name():
+    input_file = 'data/clean_data.csv'
+    output_file = 'output_data/clean_data.csv'
+    df = pd.read_csv(input_file, encoding='utf-8')
+    df.columns = ['Column1', 'Column2']  # 컬럼명 추가해 주는 부분
+    df.to_csv(output_file, index=False, encoding='utf-8')
+
 sum_csv()
+#add_column_name()
