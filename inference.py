@@ -4,8 +4,8 @@ from eda import EDA
 import pandas as pd
 import csv
 
-data_path = 'clean_g2pk_forInfer.csv'
-save_file_path = 'clean_g2pk_withEDA.csv'
+data_path = 'sampledata_asr_g2pk.csv'
+save_file_path = 'sum_sampledata_asr_g2pk.csv'
 data = pd.read_csv(data_path)
 
 script_data = data['script'].values
@@ -16,7 +16,7 @@ wr = csv.writer(f)
 
 for script, label in zip(script_data, label_data):
 
-    eda_data = EDA(script)
+    eda_data = EDA(script, num_aug=12)
     for eda in eda_data:
         print(eda)
         wr.writerow([eda, label])

@@ -43,9 +43,9 @@ def sum_sheet():
 
 def sum_csv():
     input_file = r'sum_data' # csv파일들이 있는 디렉토리 위치
-    output_file = r'sum_asr.csv'
+    output_file = r'sampledata_asr_g2pk.csv'
 
-    allFile_list = glob.glob(os.path.join(input_file, 'output*')) #sum_으로 되어있는 파일들을 모은다.
+    allFile_list = glob.glob(os.path.join(input_file, '*')) #sum_으로 되어있는 파일들을 모은다.
     print(allFile_list)
     allData = []
 
@@ -55,9 +55,9 @@ def sum_csv():
 
     dataCombine = pd.concat(allData, axis=0, ignore_index=False)
 
-    # dataCombine.columns = ['script','label'] #컬럼명 추가해 주는 부분
+    dataCombine.columns = ['script','label'] #컬럼명 추가해 주는 부분
 
-    dataCombine.to_csv(output_file, index=False, encoding='utf-8', header=False) #header = False로 하면 컬럼 이름 저장 안함.
+    dataCombine.to_csv(output_file, index=False, encoding='utf-8')#, header=False) #header = False로 하면 컬럼 이름 저장 안함.
 
 def change_csv():
     input_file = 'sampledata.csv'
