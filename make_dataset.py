@@ -43,7 +43,7 @@ def sum_sheet():
 
 def sum_csv():
     input_file = r'data' # csv파일들이 있는 디렉토리 위치
-    output_file = r'output_data/clean_g2pk_EDA.csv'
+    output_file = r'output_data/clean_g2pk_with_EDA_asr_v4.csv'
 
     allFile_list = glob.glob(os.path.join(input_file, '*')) #sum_으로 되어있는 파일들을 모은다.
     print(allFile_list)
@@ -67,8 +67,8 @@ def change_csv():
     df.to_csv(output_file, index=False, encoding='utf-8')
 
 def add_column_name():
-    input_file = 'data/clean_data.csv'
-    output_file = 'output_data/clean_data.csv'
+    input_file = 'data/clean_v3.csv'
+    output_file = 'output_data/clean_v3_forEDA.csv'
     df = pd.read_csv(input_file, encoding='utf-8')
     df.columns = ['Column1', 'Column2']  # 컬럼명 추가해 주는 부분
     df.to_csv(output_file, index=False, encoding='utf-8')

@@ -4,12 +4,12 @@ from eda import EDA
 import pandas as pd
 import csv
 
-data_path = 'data/clean_data_forEDA.csv'
-save_file_path = 'output_data/EDA_data.csv'
+data_path = 'data/clean_g2pk_asr_v4.csv'
+save_file_path = 'output_data/clean_g2pk_asr_with_EDA_v4.csv'
 
 data = pd.read_csv(data_path)
 
-#data.columns = ['Column1', 'Column2'] #컬럼명 추가해 주는 부분
+data.columns = ['Column1', 'Column2'] #컬럼명 추가해 주는 부분
 
 script_data = data['Column1'].values
 label_data = data['Column2'].values
